@@ -189,7 +189,7 @@ header.site{
 .hero-card-icon svg{width:24px;height:24px}
 .hero-card strong{display:block;color:var(--bleu-900);font-size:1rem;margin-bottom:2px}
 .hero-card span{font-size:.85rem;color:var(--ink-3)}
-@media(max-width:900px){.hero-card{left:16px;bottom:16px}}
+@media(max-width:900px){.hero-card{left:12px;bottom:16px;max-width:260px}}
 
 /* ================== TRUST BAR ================== */
 .trust{background:#fff;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
@@ -456,49 +456,130 @@ footer li{margin-bottom:10px}
 .mbar .m-form{background:var(--bleu);color:#fff}
 @media(max-width:768px){
   .mbar{display:block}
-  body{padding-bottom:86px}
 }
 
-/* ================== MOBILE REFINEMENTS ================== */
+/* ================== MOBILE — 768px ================== */
 html,body{overflow-x:hidden}
 
-@media(max-width:480px){
-  .container{padding:0 16px}
-  h1{font-size:clamp(1.7rem,6vw,2.4rem)}
-  h2{font-size:clamp(1.4rem,5vw,1.8rem)}
-  .hero{padding:40px 0 56px}
-  .hero-sub{font-size:1rem}
-  .hero-cta{flex-direction:column}
+@media(max-width:768px){
+  section{padding:48px 0}
+  .container{padding:0 20px}
+
+  /* Nav */
+  .nav{padding:10px 0}
+  .logo{font-size:1rem;gap:8px}
+  .logo-mark{width:34px;height:34px}
+  .logo-mark svg{width:18px;height:18px}
+  .nav-cta .btn-call{padding:10px 16px;font-size:.9rem}
+  .nav-cta .btn-call svg{width:16px;height:16px}
+
+  /* Hero */
+  .hero{padding:36px 0 48px}
+  .hero-grid{gap:32px}
+  .eyebrow{font-size:.8rem;padding:6px 12px}
+  .hero-sub{font-size:1rem;margin-bottom:20px}
+  .hero-cta{flex-direction:column;gap:10px}
   .hero-cta .btn{width:100%;justify-content:center}
-  .hero-badges{flex-direction:column;gap:8px}
-  .hero-visual{max-height:350px}
-  .hero-img{aspect-ratio:3/4;max-height:350px}
-  .hero-card{left:8px;right:8px;bottom:12px;max-width:none}
-  .section-head{margin-bottom:36px}
-  .section-head p{font-size:1rem}
-  .trust-grid{grid-template-columns:1fr;gap:20px;padding:32px 0}
-  .trust-item{align-items:center}
-  .service-body{padding:20px}
+  .btn-lg{padding:16px 24px;font-size:1rem}
+  .hero-badges{gap:8px}
+  .badge{padding:8px 12px;font-size:.82rem}
+  .hero-visual{max-height:320px;overflow:hidden;border-radius:20px}
+  .hero-img{aspect-ratio:16/10;max-height:320px;border-radius:20px}
+  .hero-card{left:12px;bottom:12px;padding:14px 16px;border-radius:12px;max-width:240px;gap:10px}
+  .hero-card-icon{width:40px;height:40px;border-radius:10px}
+  .hero-card-icon svg{width:20px;height:20px}
+  .hero-card strong{font-size:.9rem}
+  .hero-card span{font-size:.78rem}
+
+  /* Trust */
+  .trust-grid{grid-template-columns:1fr 1fr;gap:20px 16px;padding:32px 0}
+  .trust-icon{width:40px;height:40px;border-radius:10px}
+  .trust-icon svg{width:20px;height:20px}
+  .trust-item strong{font-size:.9rem}
+  .trust-item span{font-size:.82rem}
+
+  /* Services */
+  .services-grid{grid-template-columns:1fr;gap:20px}
+  .service-body{padding:22px}
   .service-body h3{font-size:1.15rem}
+
+  /* CPAM */
+  .steps{grid-template-columns:1fr;gap:16px}
   .step{padding:24px}
-  .cpam-note{flex-direction:column;text-align:center;padding:20px}
-  .cpam-note svg{margin:0 auto}
-  .zone-list{grid-template-columns:1fr;gap:4px}
-  .why-grid{gap:16px}
-  .why-card{padding:22px}
-  .testi-grid{gap:16px}
+  .cpam-note{flex-direction:column;text-align:center;padding:20px;gap:10px}
+  .cpam-note svg{margin:0 auto;flex-shrink:0}
+  .cpam-note span{text-align:center}
+
+  /* Zone */
+  .zone-grid{grid-template-columns:1fr;gap:32px}
+  .zone-img{aspect-ratio:16/9;max-height:220px}
+  .zone-list{grid-template-columns:1fr 1fr;gap:4px 16px}
+
+  /* Why us */
+  .why-grid{grid-template-columns:1fr;gap:14px}
+  .why-card{padding:22px;display:flex;gap:16px;align-items:flex-start}
+  .why-icon{flex-shrink:0;width:44px;height:44px;border-radius:12px;margin-bottom:0}
+  .why-icon svg{width:22px;height:22px}
+  .why-card h3{margin-bottom:4px}
+
+  /* Testimonials */
+  .testi-grid{grid-template-columns:1fr;gap:16px}
   .testi-card{padding:24px}
-  .contact-grid{gap:32px}
+
+  /* Contact */
+  .contact-grid{grid-template-columns:1fr;gap:28px}
   .form{padding:24px}
   .form-grid{grid-template-columns:1fr}
-  .foot-grid{gap:24px}
+
+  /* Footer */
+  .foot-grid{grid-template-columns:1fr;gap:28px}
   .foot-bottom{flex-direction:column;text-align:center;gap:8px}
-  .mbar a{padding:8px 4px;font-size:.72rem}
+
+  /* Bottom bar */
+  body{padding-bottom:90px}
 }
 
-@media(max-width:768px){
-  .hero-img{aspect-ratio:1/1;max-height:400px}
-  .hero-card{max-width:260px}
+/* ================== MOBILE — 480px (small phones) ================== */
+@media(max-width:480px){
+  .container{padding:0 16px}
+  section{padding:40px 0}
+  h1{font-size:clamp(1.6rem,6.5vw,2.2rem)}
+  h2{font-size:clamp(1.3rem,5vw,1.7rem)}
+
+  /* Nav — icon-only call button */
+  .logo{font-size:.92rem}
+  .nav-cta .btn-call .btn-label{display:none}
+  .nav-cta .btn-call{padding:10px;min-width:0}
+
+  /* Hero */
+  .hero{padding:28px 0 40px}
+  .hero-badges{flex-direction:column}
+  .hero-visual{max-height:260px}
+  .hero-img{aspect-ratio:16/9;max-height:260px}
+  .hero-card{left:8px;right:8px;max-width:none;bottom:8px;padding:12px 14px}
+  .hero-card strong{font-size:.85rem}
+
+  /* Trust — single column */
+  .trust-grid{grid-template-columns:1fr;gap:16px;padding:28px 0}
+
+  /* Zone */
+  .zone-list{grid-template-columns:1fr;gap:2px}
+
+  /* Why us — stack icon on top */
+  .why-card{flex-direction:column;gap:12px}
+
+  /* FAQ */
+  details.faq-item summary{padding:18px 20px;font-size:.95rem}
+  details.faq-item div{padding:0 20px 20px}
+
+  /* Form */
+  .form{padding:20px}
+  .section-head{margin-bottom:32px}
+  .section-head p{font-size:.95rem}
+
+  /* Bottom bar */
+  .mbar a{padding:8px 4px;font-size:.72rem}
+  .mbar a svg{width:20px;height:20px}
 }
 
 /* ================== ANIMATIONS ================== */
@@ -532,7 +613,7 @@ html,body{overflow-x:hidden}
       <a href="#contact" class="btn btn-ghost">Devis gratuit</a>
       <a href="tel:[TÉLÉPHONE_INTL]" class="btn btn-call" aria-label="Appeler [TÉLÉPHONE]">
         <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.8 19.8 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.8 12.8 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.8 12.8 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-        Appeler
+        <span class="btn-label">Appeler</span>
       </a>
       <label for="nav-toggle" class="burger" aria-label="Menu">
         <svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round"><line x1="4" y1="7" x2="20" y2="7"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="17" x2="20" y2="17"/></svg>
