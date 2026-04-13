@@ -4,20 +4,20 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#0B3D6F">
-<title>[NOM_ENTREPRISE] — Taxi à Lyon · Transport professionnel, médical CPAM & longue distance</title>
-<meta name="description" content="Taxi à Lyon 7j/7 : déplacements professionnels, transport médical conventionné CPAM (TAP & VSL), aéroport, gares, longue distance. Ponctualité et discrétion. Appelez 06 99 83 53 89.">
+<title>Taxi Montdor — Taxi à Lyon · Transport professionnel, médical CPAM & longue distance</title>
+<meta name="description" content="Taxis à Lyon 7j/7 : déplacements professionnels & privés, transport médical conventionné CPAM (TAP & VSL), aéroport, gares, longue distance. Ponctualité et discrétion. Appelez 06 99 83 53 89.">
 <meta name="robots" content="index,follow">
-<meta name="author" content="[NOM_ENTREPRISE]">
+<meta name="author" content="Taxi Montdor">
 <meta name="geo.region" content="FR-ARA">
 <meta name="geo.placename" content="Lyon">
 
 <!-- Open Graph -->
 <meta property="og:type" content="website">
 <meta property="og:locale" content="fr_FR">
-<meta property="og:title" content="[NOM_ENTREPRISE] — Taxi à Lyon, professionnel & médical CPAM">
-<meta property="og:description" content="Taxi à Lyon pour tous vos déplacements : professionnel, médical conventionné CPAM, aéroport et longue distance. Service 7j/7.">
-<meta property="og:image" content="https://images.unsplash.com/photo-1549399542-7e3f8b79c341?w=1200&q=80">
-<meta property="og:site_name" content="[NOM_ENTREPRISE]">
+<meta property="og:title" content="Taxi Montdor — Taxi à Lyon, professionnel & médical CPAM">
+<meta property="og:description" content="Taxis à Lyon pour tous vos déplacements : professionnels, privés, médical conventionné CPAM, aéroport et longue distance. Service 7j/7.">
+<meta property="og:image" content="tesla-hero.png">
+<meta property="og:site_name" content="Taxi Montdor">
 
 <!-- Preconnect for performance -->
 <link rel="preconnect" href="https://images.unsplash.com" crossorigin>
@@ -25,12 +25,12 @@
 <!--
 ============================================================
   PLACEHOLDERS À REMPLACER (fais un search & replace) :
-  [NOM_ENTREPRISE]   → ex: "Taxi Dupont Lyon"
-  [NOM_CHAUFFEUR]    → ex: "Mehdi Dupont"
+  Taxi Montdor   → ex: "Taxi Dupont Lyon"
+  Sullivan et Gabriel    → ex: "Mehdi Dupont"
   06 99 83 53 89     → numéro actuellement en dur (confirmé)
   [NUM_LICENCE_TAXI] → ex: "Licence n° 123 — Préfecture du Rhône"
-  [ADRESSE]          → ex: "Lyon, Rhône (69)"
-  [HORAIRES]         → ex: "7j/7 — 24h/24"
+  43 Rte de Limonest, 69380 Lissieu          → ex: "Lyon, Rhône (69)"
+  7j/7 — 24h/24         → ex: "7j/7 — 24h/24"
 
   À FAIRE AVANT MISE EN LIGNE :
   - Remplacer l'URL Formspree (voir <form action=...>) par un vrai endpoint
@@ -173,9 +173,9 @@ header.site{
 
 .hero-visual{position:relative}
 .hero-img{
-  border-radius:24px;overflow:hidden;aspect-ratio:4/5;
+  border-radius:24px;overflow:hidden;aspect-ratio:4/3;
   box-shadow:var(--shadow-lg);
-  background:#ddd url('https://images.unsplash.com/photo-1549399542-7e3f8b79c341?w=900&q=80') center/cover no-repeat;
+  background:#ddd url('tesla-hero.png') center/cover no-repeat;
   position:relative;
 }
 .hero-img::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 50%,rgba(11,61,111,.35))}
@@ -294,7 +294,7 @@ header.site{
 @media(max-width:900px){.zone-grid{grid-template-columns:1fr;gap:40px}}
 .zone-img{
   aspect-ratio:4/3;border-radius:var(--radius);
-  background:#ddd url('https://images.unsplash.com/photo-1524396309943-e03f5249f002?w=900&q=80') center/cover no-repeat;
+  background:#ddd url('Lyon%20Areal%20Shot.png') center/cover no-repeat;
   box-shadow:var(--shadow-lg);
 }
 .zone-list{
@@ -368,9 +368,10 @@ details.faq-item summary::-webkit-details-marker{display:none}
 .faq-icon{
   width:28px;height:28px;border-radius:50%;
   background:var(--cyan-soft);color:var(--bleu);
-  display:grid;place-items:center;flex-shrink:0;
-  font-size:1.3rem;font-weight:700;transition:var(--t);
+  display:flex;align-items:center;justify-content:center;flex-shrink:0;
+  transition:var(--t);
 }
+.faq-icon svg{width:14px;height:14px;transition:var(--t);flex-shrink:0}
 details[open] .faq-icon{background:var(--bleu);color:#fff;transform:rotate(45deg)}
 details.faq-item div{padding:0 28px 24px;color:var(--ink-2);font-size:.96rem}
 details.faq-item div p{margin:0 0 10px}
@@ -586,6 +587,35 @@ html,body{overflow-x:hidden}
   .mbar a svg{width:20px;height:20px}
 }
 
+/* ================== PHONE POPOVER ================== */
+.phone-popover-wrap{position:relative;display:inline-flex}
+.phone-popover{
+  display:none;position:absolute;top:calc(100% + 10px);left:50%;transform:translateX(-50%);
+  background:#fff;border:1px solid var(--line);border-radius:var(--radius-sm);
+  box-shadow:var(--shadow-lg);overflow:hidden;z-index:50;min-width:220px;
+}
+.phone-popover-wrap.open .phone-popover{display:block}
+.phone-popover::before{
+  content:"";position:absolute;top:-6px;left:50%;transform:translateX(-50%) rotate(45deg);
+  width:12px;height:12px;background:#fff;border-left:1px solid var(--line);border-top:1px solid var(--line);
+}
+.phone-option{
+  display:flex;align-items:center;gap:12px;padding:16px 20px;
+  color:var(--ink);font-weight:600;font-size:1rem;
+  text-decoration:none;transition:var(--t);
+}
+.phone-option:hover{background:var(--cyan-soft);color:var(--bleu);text-decoration:none}
+.phone-option+.phone-option{border-top:1px solid var(--line)}
+.phone-option svg{color:var(--bleu);flex-shrink:0}
+@media(max-width:768px){
+  .phone-popover{position:fixed;top:auto;bottom:0;left:0;right:0;transform:none;
+    border-radius:20px 20px 0 0;min-width:100%;padding-bottom:env(safe-area-inset-bottom)}
+  .phone-popover::before{display:none}
+  .phone-option{padding:20px 24px;font-size:1.05rem}
+  .phone-backdrop{display:none;position:fixed;inset:0;background:rgba(0,0,0,.4);z-index:40}
+  .phone-popover-wrap.open .phone-backdrop{display:block}
+}
+
 /* ================== ANIMATIONS ================== */
 @media (prefers-reduced-motion: no-preference){
   .reveal{opacity:0;transform:translateY(20px);animation:rise .8s ease forwards}
@@ -598,11 +628,11 @@ html,body{overflow-x:hidden}
 <!-- ================== HEADER ================== -->
 <header class="site">
   <div class="container nav">
-    <a href="#" class="logo" aria-label="[NOM_ENTREPRISE] — accueil">
+    <a href="#" class="logo" aria-label="Taxi Montdor — accueil">
       <span class="logo-mark">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 17h14M7 17v-5l2-5h6l2 5v5M7 12h10"/><circle cx="8" cy="17" r="2"/><circle cx="16" cy="17" r="2"/></svg>
       </span>
-      [NOM_ENTREPRISE]
+      Taxi Montdor
     </a>
 
     <nav class="nav-links" aria-label="Navigation principale">
@@ -639,23 +669,40 @@ html,body{overflow-x:hidden}
 <section class="hero">
   <div class="container hero-grid">
     <div class="reveal">
-      <h1>Votre taxi pour tous vos déplacements,<br><span>en toute sérénité.</span></h1>
+      <h1>Vos taxis pour tous vos déplacements,<br><span>en toute sérénité.</span></h1>
       <p class="hero-sub">
-        Déplacements professionnels, transport médical conventionné (TAP &amp; VSL),
-        aéroport, gares et longue distance. Chauffeur agréé, ponctuel et discret —
+        Déplacements professionnels &amp; privés, transport médical conventionné (TAP &amp; VSL),
+        aéroport, gares et longue distance. Chauffeurs agréés, ponctuels et discrets —
         <strong>aucune avance de frais</strong> sur prescription médicale.
       </p>
       <div class="hero-cta">
-        <a href="tel:+33699835389" class="btn btn-call btn-lg">
-          <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.8 19.8 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.8 12.8 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.8 12.8 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-          06 99 83 53 89
-        </a>
+        <div class="phone-popover-wrap">
+          <button type="button" class="btn btn-call btn-lg phone-trigger" aria-expanded="false" aria-haspopup="true">
+            <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.8 19.8 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.8 12.8 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.8 12.8 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            06 99 83 53 89
+          </button>
+          <div class="phone-backdrop"></div>
+          <div class="phone-popover" role="menu">
+            <a href="tel:+33699835389" class="phone-option" role="menuitem">
+              <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.8 19.8 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.8 12.8 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.8 12.8 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+              Appeler
+            </a>
+            <a href="sms:+33699835389" class="phone-option" role="menuitem">
+              <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+              Envoyer un SMS
+            </a>
+          </div>
+        </div>
         <a href="#contact" class="btn btn-ghost btn-lg">Demander un devis</a>
       </div>
       <div class="hero-badges">
         <span class="badge">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-          Tous déplacements
+          Taxi conventionné
+        </span>
+        <span class="badge">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+          Déplacement professionnel / privé
         </span>
         <span class="badge">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
@@ -669,7 +716,7 @@ html,body{overflow-x:hidden}
     </div>
 
     <div class="hero-visual reveal">
-      <div class="hero-img" role="img" aria-label="Véhicule taxi professionnel à Lyon"></div>
+      <div class="hero-img" role="img" aria-label="Tesla — véhicule taxi professionnel à Lyon"></div>
       <div class="hero-card">
         <div class="hero-card-icon">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
@@ -720,7 +767,7 @@ html,body{overflow-x:hidden}
         </div>
         <div>
           <strong>Discrétion &amp; confort</strong>
-          <span>Véhicule entretenu, conduite douce</span>
+          <span>Véhicules entretenus, conduite douce</span>
         </div>
       </div>
     </div>
@@ -732,18 +779,18 @@ html,body{overflow-x:hidden}
   <div class="container">
     <div class="section-head">
       <span class="eyebrow">Nos prestations</span>
-      <h2>Un taxi, trois métiers</h2>
-      <p>Déplacement pro, transport médical conventionné, ou longue distance : le même niveau d'exigence, la même personne au volant. Un interlocuteur unique pour tous vos trajets.</p>
+      <h2>Une flotte, trois métiers</h2>
+      <p>Déplacement pro ou privé, transport médical conventionné, ou longue distance : le même niveau d'exigence à chaque trajet. Plusieurs véhicules, une seule équipe de confiance.</p>
     </div>
 
     <div class="services-grid">
       <article class="service-card">
-        <div class="service-img" style="background-image:url('https://images.unsplash.com/photo-1599819055363-eabe62320dd0?w=800&q=80')">
+        <div class="service-img" style="background-image:url('Man%20in%20Car.png')">
           <span class="service-tag">Lyon &amp; métropole</span>
         </div>
         <div class="service-body">
-          <h3>Transport professionnel &amp; courses</h3>
-          <p>Rendez-vous d'affaires, clients à accueillir, trajets quotidiens ou occasionnels. Véhicule soigné, conducteur ponctuel, discrétion totale.</p>
+          <h3>Transport professionnel &amp; privé</h3>
+          <p>Rendez-vous d'affaires, clients à accueillir, trajets quotidiens ou occasionnels. Véhicules soignés, conducteurs ponctuels, discrétion totale.</p>
           <ul>
             <li>Déplacements &amp; rendez-vous professionnels</li>
             <li>Accueil et transfert de clients / partenaires</li>
@@ -755,17 +802,17 @@ html,body{overflow-x:hidden}
       </article>
 
       <article class="service-card">
-        <div class="service-img" style="background-image:url('https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?w=800&q=80')">
-          <span class="service-tag">France &amp; Suisse</span>
+        <div class="service-img" style="background-image:url('Outdoors.png')">
+          <span class="service-tag">France · Suisse · et au-delà</span>
         </div>
         <div class="service-body">
           <h3>Longue distance &amp; aéroports</h3>
-          <p>Tarifs communiqués à l'avance. Véhicule confortable, prise en charge à domicile, suivi du vol ou du train.</p>
+          <p>Tarifs communiqués à l'avance. Véhicules confortables, prise en charge à domicile, suivi du vol ou du train.</p>
           <ul>
             <li>Aéroport Lyon–Saint-Exupéry</li>
-            <li>Aéroport de Genève &amp; frontières</li>
+            <li>Aéroport de Genève &amp; Suisse</li>
             <li>Gares TGV (Part-Dieu, Perrache)</li>
-            <li>Trajets inter-villes personnalisés</li>
+            <li>Toute destination sur devis</li>
           </ul>
           <a href="#contact" class="service-link">Demander un devis →</a>
         </div>
@@ -796,7 +843,7 @@ html,body{overflow-x:hidden}
   <div class="container">
     <div class="section-head">
       <span class="eyebrow">Focus — Transport médical</span>
-      <h2>Conventionné CPAM : comment ça marche ?</h2>
+      <h2 style="white-space:nowrap;font-size:clamp(1.1rem,2.5vw,2rem)">Conventionné CPAM : comment ça marche ?</h2>
       <p>Votre médecin vous a prescrit un transport médical ? Voici comment ça se passe, en 3 étapes simples.</p>
     </div>
 
@@ -833,7 +880,7 @@ html,body{overflow-x:hidden}
       <div>
         <span class="eyebrow">Zone desservie</span>
         <h2>Lyon, la métropole &amp; au-delà</h2>
-        <p>Nous intervenons à Lyon intra-muros et dans toute la métropole. Pour les trajets longue distance, nous couvrons la région Auvergne-Rhône-Alpes et la France entière sur devis.</p>
+        <p>Nos taxis interviennent à Lyon intra-muros et dans toute la métropole. Pour les trajets longue distance, nous couvrons la région Auvergne-Rhône-Alpes et la France entière sur devis.</p>
         <ul class="zone-list">
           <li>Lyon 1ᵉʳ au 9ᵉ</li>
           <li>Villeurbanne</li>
@@ -859,7 +906,7 @@ html,body{overflow-x:hidden}
   <div class="container">
     <div class="section-head">
       <span class="eyebrow">Pourquoi nous choisir</span>
-      <h2>Un taxi, mais surtout une présence rassurante</h2>
+      <h2>Des taxis, mais surtout une présence rassurante</h2>
     </div>
 
     <div class="why-grid">
@@ -868,7 +915,7 @@ html,body{overflow-x:hidden}
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
         </div>
         <h3>Ponctualité garantie</h3>
-        <p>Rendez-vous d'affaires, vol à prendre ou consultation médicale : vous arriverez à l'heure, systématiquement.</p>
+        <p>Rendez-vous d'affaires, vol à prendre ou consultation médicale : nos chauffeurs vous amènent à l'heure, systématiquement.</p>
       </div>
 
       <div class="why-card">
@@ -876,7 +923,7 @@ html,body{overflow-x:hidden}
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
         </div>
         <h3>Discrétion &amp; bienveillance</h3>
-        <p>Clients professionnels ou patients : nous respectons votre intimité, votre confort et votre silence quand vous le souhaitez.</p>
+        <p>Clients professionnels ou patients : chaque chauffeur respecte votre intimité, votre confort et votre silence quand vous le souhaitez.</p>
       </div>
 
       <div class="why-card">
@@ -891,8 +938,8 @@ html,body{overflow-x:hidden}
         <div class="why-icon">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
         </div>
-        <h3>Chauffeur agréé &amp; déclaré</h3>
-        <p>Licence taxi officielle, assurance professionnelle, véhicule contrôlé et maintenu impeccable.</p>
+        <h3>Chauffeurs agréés &amp; déclarés</h3>
+        <p>Licences taxi officielles, assurance professionnelle, véhicules contrôlés et maintenus impeccables.</p>
       </div>
 
       <div class="why-card">
@@ -937,7 +984,7 @@ html,body{overflow-x:hidden}
 
       <div class="testi-card">
         <div class="stars">★★★★★</div>
-        <p>"Chauffeur d'une gentillesse remarquable. Je fais mes séances de dialyse trois fois par semaine et [NOM_CHAUFFEUR] est toujours ponctuel, patient, et très respectueux. Un vrai soutien."</p>
+        <p>"Chauffeur d'une gentillesse remarquable. Je fais mes séances de dialyse trois fois par semaine et Sullivan est toujours ponctuel, patient, et très respectueux. Un vrai soutien."</p>
         <div class="testi-meta">
           <div class="testi-avatar">MC</div>
           <div>
@@ -949,7 +996,7 @@ html,body{overflow-x:hidden}
 
       <div class="testi-card">
         <div class="stars">★★★★★</div>
-        <p>"On fait appel à lui régulièrement pour accueillir nos clients à Part-Dieu. Toujours à l'heure, présentation irréprochable, véhicule propre. Un partenaire fiable."</p>
+        <p>"On fait appel à Gabriel régulièrement pour accueillir nos clients à Part-Dieu. Toujours à l'heure, présentation irréprochable, véhicule propre. Un partenaire fiable."</p>
         <div class="testi-meta">
           <div class="testi-avatar">TM</div>
           <div>
@@ -972,14 +1019,14 @@ html,body{overflow-x:hidden}
 
     <div class="faq-list">
       <details class="faq-item" open>
-        <summary>Quels types de trajets effectuez-vous ?<span class="faq-icon">+</span></summary>
+        <summary>Quels types de trajets effectuez-vous ?<span class="faq-icon"><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="7" y1="1" x2="7" y2="13"/><line x1="1" y1="7" x2="13" y2="7"/></svg></span></summary>
         <div>
-          <p>Tous types de déplacements : <strong>professionnels</strong> (rendez-vous, accueil clients, trajets quotidiens), <strong>longue distance</strong> (aéroports, gares, inter-villes), et <strong>transport médical</strong> conventionné CPAM (TAP et VSL sur prescription).</p>
+          <p>Tous types de déplacements : <strong>professionnels &amp; privés</strong> (rendez-vous, accueil clients, trajets quotidiens, sorties personnelles), <strong>longue distance</strong> (aéroports, gares, inter-villes), et <strong>transport médical</strong> conventionné CPAM (TAP et VSL sur prescription).</p>
         </div>
       </details>
 
       <details class="faq-item">
-        <summary>Comment obtenir une prise en charge par la CPAM ?<span class="faq-icon">+</span></summary>
+        <summary>Comment obtenir une prise en charge par la CPAM ?<span class="faq-icon"><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="7" y1="1" x2="7" y2="13"/><line x1="1" y1="7" x2="13" y2="7"/></svg></span></summary>
         <div>
           <p>Il vous faut une <strong>prescription médicale de transport</strong> délivrée par votre médecin (médecin traitant, spécialiste ou hôpital). Ce document précise la nature du transport autorisé (TAP, VSL ou ambulance).</p>
           <p>Dès réception, il suffit de nous appeler pour réserver : nous nous occupons du reste.</p>
@@ -987,42 +1034,42 @@ html,body{overflow-x:hidden}
       </details>
 
       <details class="faq-item">
-        <summary>Dois-je avancer les frais pour un transport médical ?<span class="faq-icon">+</span></summary>
+        <summary>Dois-je avancer les frais pour un transport médical ?<span class="faq-icon"><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="7" y1="1" x2="7" y2="13"/><line x1="1" y1="7" x2="13" y2="7"/></svg></span></summary>
         <div>
           <p>Non, dans la plupart des cas. Grâce au <strong>tiers payant</strong>, nous facturons directement la CPAM et votre mutuelle. Le taux de prise en charge dépend de votre situation (ALD, maternité, hospitalisation, AT/MP, etc.) et de votre complémentaire santé. Munissez-vous de votre prescription, carte Vitale à jour et attestation de mutuelle — nous vérifions les détails ensemble.</p>
         </div>
       </details>
 
       <details class="faq-item">
-        <summary>Quels hôpitaux et cliniques desservez-vous ?<span class="faq-icon">+</span></summary>
+        <summary>Quels hôpitaux et cliniques desservez-vous ?<span class="faq-icon"><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="7" y1="1" x2="7" y2="13"/><line x1="1" y1="7" x2="13" y2="7"/></svg></span></summary>
         <div>
           <p>Nous desservons tous les établissements de la région lyonnaise : les Hospices Civils de Lyon (Édouard Herriot, Croix-Rousse, Lyon Sud, Femme-Mère-Enfant), le Centre Léon Bérard, l'Hôpital Saint-Joseph Saint-Luc, la Clinique du Tonkin, la Clinique Mutualiste et toutes les autres structures publiques et privées.</p>
         </div>
       </details>
 
       <details class="faq-item">
-        <summary>Puis-je réserver pour un proche ou un client ?<span class="faq-icon">+</span></summary>
+        <summary>Puis-je réserver pour un proche ou un client ?<span class="faq-icon"><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="7" y1="1" x2="7" y2="13"/><line x1="1" y1="7" x2="13" y2="7"/></svg></span></summary>
         <div>
           <p>Absolument. Communiquez-nous les informations du passager (nom, adresse, date, heure, destination). Nous nous chargeons du reste et confirmons directement avec vous ou la personne concernée. Idéal pour accueillir un client, organiser le trajet d'un proche ou planifier un rendez-vous médical.</p>
         </div>
       </details>
 
       <details class="faq-item">
-        <summary>Acceptez-vous toutes les mutuelles ?<span class="faq-icon">+</span></summary>
+        <summary>Acceptez-vous toutes les mutuelles ?<span class="faq-icon"><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="7" y1="1" x2="7" y2="13"/><line x1="1" y1="7" x2="13" y2="7"/></svg></span></summary>
         <div>
           <p>Oui, nous acceptons l'ensemble des mutuelles complémentaires santé (Harmonie Mutuelle, MGEN, MAAF, Malakoff Humanis, Apicil, Groupama, etc.). Si vous avez un doute, appelez-nous avec votre attestation : nous vérifions en direct.</p>
         </div>
       </details>
 
       <details class="faq-item">
-        <summary>Faites-vous les trajets vers l'aéroport et Genève ?<span class="faq-icon">+</span></summary>
+        <summary>Faites-vous les trajets vers l'aéroport et Genève ?<span class="faq-icon"><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="7" y1="1" x2="7" y2="13"/><line x1="1" y1="7" x2="13" y2="7"/></svg></span></summary>
         <div>
           <p>Oui, nous effectuons régulièrement des trajets vers <strong>Lyon–Saint-Exupéry</strong>, l'<strong>aéroport de Genève</strong>, ainsi que les grandes gares TGV. Les tarifs sont calculés et communiqués à l'avance, sans surprise. Réservation conseillée 24h avant.</p>
         </div>
       </details>
 
       <details class="faq-item">
-        <summary>Combien de temps à l'avance faut-il réserver ?<span class="faq-icon">+</span></summary>
+        <summary>Combien de temps à l'avance faut-il réserver ?<span class="faq-icon"><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="7" y1="1" x2="7" y2="13"/><line x1="1" y1="7" x2="13" y2="7"/></svg></span></summary>
         <div>
           <p>Pour un transport médical régulier (dialyse, chimio) ou des déplacements pro récurrents, nous mettons en place un planning fixe à votre convenance. Pour un trajet ponctuel, 24 à 48h à l'avance est idéal. Pour les demandes du jour, appelez-nous directement : nous faisons toujours notre possible.</p>
         </div>
@@ -1075,7 +1122,7 @@ html,body{overflow-x:hidden}
         <div class="field">
           <label for="f-type">Type de transport</label>
           <select id="f-type" name="type">
-            <option>Transport professionnel / course</option>
+            <option>Transport professionnel / privé</option>
             <option>Longue distance / Aéroport / Gare</option>
             <option>Transport médical (prescription CPAM)</option>
             <option>Autre — à préciser</option>
@@ -1103,7 +1150,7 @@ html,body{overflow-x:hidden}
         <button type="submit" class="btn btn-primary btn-lg" style="width:100%">
           Envoyer ma demande
         </button>
-        <small>En envoyant ce formulaire, vous acceptez d'être recontacté par [NOM_ENTREPRISE]. Vos données ne sont jamais partagées avec des tiers.</small>
+        <small>En envoyant ce formulaire, vous acceptez d'être recontacté par Taxi Montdor. Vos données ne sont jamais partagées avec des tiers.</small>
       </form>
 
       <div class="contact-info">
@@ -1133,7 +1180,7 @@ html,body{overflow-x:hidden}
           </div>
           <div>
             <strong>Zone &amp; horaires</strong>
-            <span style="font-size:.98rem">[ADRESSE] · [HORAIRES]</span>
+            <span style="font-size:.98rem">43 Rte de Limonest, 69380 Lissieu · 7j/7 — 24h/24</span>
           </div>
         </div>
       </div>
@@ -1150,21 +1197,20 @@ html,body{overflow-x:hidden}
           <span class="logo-mark">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 17h14M7 17v-5l2-5h6l2 5v5M7 12h10"/><circle cx="8" cy="17" r="2"/><circle cx="16" cy="17" r="2"/></svg>
           </span>
-          [NOM_ENTREPRISE]
+          Taxi Montdor
         </div>
         <p style="color:rgba(255,255,255,.7);max-width:340px">
-          Votre taxi à Lyon, pour tous vos déplacements : professionnels, longue distance, aéroport et transport médical conventionné CPAM. Ponctualité, discrétion et confort.
+          Vos taxis à Lyon, pour tous vos déplacements : professionnels, privés, longue distance, aéroport et transport médical conventionné CPAM. Ponctualité, discrétion et confort.
         </p>
         <p style="color:rgba(255,255,255,.5);font-size:.82rem;margin-top:16px">
-          [NUM_LICENCE_TAXI]<br>
-          Chauffeur : [NOM_CHAUFFEUR]
+          Équipe de chauffeurs professionnels
         </p>
       </div>
 
       <div>
         <h4>Services</h4>
         <ul>
-          <li><a href="#services">Transport professionnel</a></li>
+          <li><a href="#services">Transport professionnel &amp; privé</a></li>
           <li><a href="#services">Longue distance &amp; aéroport</a></li>
           <li><a href="#services">Transport médical (TAP / VSL)</a></li>
           <li><a href="#cpam">Prise en charge CPAM</a></li>
@@ -1176,14 +1222,14 @@ html,body{overflow-x:hidden}
         <ul>
           <li><a href="tel:+33699835389">06 99 83 53 89</a></li>
           <li><a href="https://wa.me/33699835389" target="_blank" rel="noopener">WhatsApp</a></li>
-          <li>[ADRESSE]</li>
-          <li>[HORAIRES]</li>
+          <li>43 Rte de Limonest, 69380 Lissieu</li>
+          <li>7j/7 — 24h/24</li>
         </ul>
       </div>
     </div>
 
     <div class="foot-bottom">
-      <div>© <span id="year">2026</span> [NOM_ENTREPRISE]. Tous droits réservés.</div>
+      <div>© <span id="year">2026</span> Taxi Montdor. Tous droits réservés.</div>
       <div><a href="#">Mentions légales</a> · <a href="#">Politique de confidentialité</a></div>
     </div>
   </div>
@@ -1212,7 +1258,7 @@ html,body{overflow-x:hidden}
 {
   "@context":"https://schema.org",
   "@type":"TaxiService",
-  "name":"[NOM_ENTREPRISE]",
+  "name":"Taxi Montdor",
   "description":"Taxi à Lyon, France pour tous déplacements : professionnels, longue distance, aéroport, gares et transport médical conventionné CPAM (TAP et VSL).",
   "telephone":"+33699835389",
   "priceRange":"€€",
@@ -1273,12 +1319,25 @@ html,body{overflow-x:hidden}
   },
   "provider":{
     "@type":"Person",
-    "name":"[NOM_CHAUFFEUR]"
+    "name":"Taxi Montdor"
   }
 }
 </script>
 
 <script>document.getElementById('year').textContent=new Date().getFullYear();</script>
 
+<script>
+(function(){
+  var wrap=document.querySelector('.phone-popover-wrap');
+  var btn=wrap.querySelector('.phone-trigger');
+  var backdrop=wrap.querySelector('.phone-backdrop');
+  function toggle(){wrap.classList.toggle('open');btn.setAttribute('aria-expanded',wrap.classList.contains('open'))}
+  function close(){wrap.classList.remove('open');btn.setAttribute('aria-expanded','false')}
+  btn.addEventListener('click',function(e){e.preventDefault();toggle()});
+  backdrop.addEventListener('click',close);
+  document.addEventListener('click',function(e){if(!wrap.contains(e.target))close()});
+  document.addEventListener('keydown',function(e){if(e.key==='Escape')close()});
+})();
+</script>
 </body>
 </html>
