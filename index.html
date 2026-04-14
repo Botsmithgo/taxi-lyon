@@ -16,8 +16,19 @@
 <meta property="og:locale" content="fr_FR">
 <meta property="og:title" content="Taxi Montdor — Taxi à Lyon, professionnel & médical CPAM">
 <meta property="og:description" content="Taxis à Lyon pour tous vos déplacements : professionnels, privés, médical conventionné CPAM, aéroport et longue distance. Service 7j/7.">
-<meta property="og:image" content="tesla-hero.jpg">
+<meta property="og:image" content="https://botsmithgo.github.io/taxi-lyon/tesla-hero.jpg">
 <meta property="og:site_name" content="Taxi Montdor">
+<meta property="og:url" content="https://botsmithgo.github.io/taxi-lyon/">
+
+<link rel="canonical" href="https://botsmithgo.github.io/taxi-lyon/">
+
+<!-- Favicon -->
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><defs><linearGradient id='g' x1='0' y1='0' x2='1' y2='1'><stop offset='0%25' stop-color='%230B3D6F'/><stop offset='100%25' stop-color='%234FB3E8'/></linearGradient></defs><rect width='100' height='100' rx='20' fill='url(%23g)'/><text x='50' y='72' text-anchor='middle' font-family='Georgia,serif' font-weight='900' font-size='68' fill='white'>M</text></svg>">
+
+<!-- Logo font -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@900&text=M" rel="stylesheet">
 
 <!-- Preconnect for performance -->
 <link rel="preconnect" href="https://images.unsplash.com" crossorigin>
@@ -117,8 +128,9 @@ header.site{
 .logo-mark{
   width:38px;height:38px;border-radius:10px;
   background:linear-gradient(135deg,var(--bleu),var(--cyan));
-  display:grid;place-items:center;color:#fff;font-size:1.2rem;
-  box-shadow:var(--shadow);
+  display:grid;place-items:center;color:#fff;
+  font-size:1.35rem;font-weight:900;line-height:1;
+  box-shadow:var(--shadow);font-family:'Playfair Display',Georgia,serif;
 }
 .logo-mark svg{width:22px;height:22px}
 .nav-links{display:flex;gap:28px;align-items:center}
@@ -473,8 +485,7 @@ html,body{overflow-x:hidden}
   /* Nav */
   .nav{padding:10px 0}
   .logo{font-size:1rem;gap:8px}
-  .logo-mark{width:34px;height:34px}
-  .logo-mark svg{width:18px;height:18px}
+  .logo-mark{width:34px;height:34px;font-size:1.15rem}
   .nav-cta .btn-call{padding:10px 16px;font-size:.9rem}
   .nav-cta .btn-call svg{width:16px;height:16px}
 
@@ -709,9 +720,7 @@ details.faq-item[open] > div{grid-template-rows:1fr;padding-bottom:24px}
 <header class="site">
   <div class="container nav">
     <a href="#" class="logo" aria-label="Taxi Montdor — accueil">
-      <span class="logo-mark">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 17h14M7 17v-5l2-5h6l2 5v5M7 12h10"/><circle cx="8" cy="17" r="2"/><circle cx="16" cy="17" r="2"/></svg>
-      </span>
+      <span class="logo-mark">M</span>
       Taxi Montdor
     </a>
 
@@ -1269,11 +1278,11 @@ details.faq-item[open] > div{grid-template-rows:1fr;padding-bottom:24px}
 
         <div class="info-card info-addr" style="cursor:default">
           <div class="info-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
           </div>
           <div>
-            <strong>Zone &amp; horaires</strong>
-            <span style="font-size:.98rem">43 Rte de Limonest, 69380 Lissieu · 7j/7 — 24h/24</span>
+            <strong>Lyon &amp; alentours · 7j/7 — 24h/24</strong>
+            <span style="font-size:.98rem">Nous venons à vous, partout dans la métropole lyonnaise et au-delà.</span>
           </div>
         </div>
       </div>
@@ -1287,9 +1296,7 @@ details.faq-item[open] > div{grid-template-rows:1fr;padding-bottom:24px}
     <div class="foot-grid">
       <div>
         <div class="foot-logo">
-          <span class="logo-mark">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 17h14M7 17v-5l2-5h6l2 5v5M7 12h10"/><circle cx="8" cy="17" r="2"/><circle cx="16" cy="17" r="2"/></svg>
-          </span>
+          <span class="logo-mark">M</span>
           Taxi Montdor
         </div>
         <p style="color:rgba(255,255,255,.7);max-width:340px">

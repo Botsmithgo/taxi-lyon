@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://botsmithgo.github.io/taxi-lyon/sitemap.xml
