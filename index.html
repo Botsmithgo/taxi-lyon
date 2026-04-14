@@ -652,8 +652,8 @@ html,body{overflow-x:hidden}
   .reveal-right{transform:translateX(32px)}
   .reveal-scale{transform:scale(.96) translateY(12px)}
 
-  /* Visible state */
-  .reveal.is-visible,.reveal-left.is-visible,.reveal-right.is-visible,.reveal-scale.is-visible{
+  /* Visible state — specificity must beat :not(.hero .reveal) which is 0,3,0 */
+  .reveal:not(.hero .reveal).is-visible,.reveal-left.is-visible,.reveal-right.is-visible,.reveal-scale.is-visible{
     opacity:1;transform:none;
     transition:opacity .65s ease,transform .65s cubic-bezier(.22,.68,0,1.15);
   }
