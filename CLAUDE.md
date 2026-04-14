@@ -94,8 +94,7 @@ The form currently uses the legacy endpoint `https://formspree.io/taxi.montdor@g
 2. Verify the email address (confirmation email was sent)
 3. Create a new form in the dashboard
 4. Copy the endpoint — format: `https://formspree.io/f/XXXXXXXX`
-5. Update in `index.html`: find `action="https://formspree.io/taxi.montdor@gmail.com"` and replace with the new endpoint
-6. Push to GitHub
+5. ✅ Done — endpoint is `https://formspree.io/f/mkokgnwd`
 
 ### Future v2 ideas
 - Mentions légales + Politique de confidentialité pages
