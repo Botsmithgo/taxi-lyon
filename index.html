@@ -373,7 +373,7 @@ details.faq-item summary::-webkit-details-marker{display:none}
 }
 .faq-icon svg{width:14px;height:14px;transition:var(--t);flex-shrink:0}
 details[open] .faq-icon{background:var(--bleu);color:#fff;transform:rotate(45deg)}
-details.faq-item div{padding:0 28px 24px;color:var(--ink-2);font-size:.96rem}
+details.faq-item div{color:var(--ink-2);font-size:.96rem}
 details.faq-item div p{margin:0 0 10px}
 
 /* ================== CONTACT ================== */
@@ -618,8 +618,100 @@ html,body{overflow-x:hidden}
 
 /* ================== ANIMATIONS ================== */
 @media (prefers-reduced-motion: no-preference){
-  .reveal{opacity:0;transform:translateY(20px);animation:rise .8s ease forwards}
+
+  /* Hero: load-triggered */
+  .hero .reveal{opacity:0;transform:translateY(24px);animation:rise .8s ease forwards}
+  .hero .reveal:nth-child(2){animation-delay:.15s}
   @keyframes rise{to{opacity:1;transform:none}}
+
+  /* Scroll-triggered base states */
+  .reveal:not(.hero .reveal),.reveal-left,.reveal-right,.reveal-scale{opacity:0;will-change:opacity,transform}
+  .reveal:not(.hero .reveal){transform:translateY(24px)}
+  .reveal-left{transform:translateX(-32px)}
+  .reveal-right{transform:translateX(32px)}
+  .reveal-scale{transform:scale(.96) translateY(12px)}
+
+  /* Visible state */
+  .reveal.is-visible,.reveal-left.is-visible,.reveal-right.is-visible,.reveal-scale.is-visible{
+    opacity:1;transform:none;
+    transition:opacity .65s ease,transform .65s cubic-bezier(.22,.68,0,1.15);
+  }
+
+  /* Stagger delays */
+  .reveal-stagger > *:nth-child(1){transition-delay:0ms}
+  .reveal-stagger > *:nth-child(2){transition-delay:80ms}
+  .reveal-stagger > *:nth-child(3){transition-delay:160ms}
+  .reveal-stagger > *:nth-child(4){transition-delay:240ms}
+  .reveal-stagger > *:nth-child(5){transition-delay:320ms}
+  .reveal-stagger > *:nth-child(6){transition-delay:400ms}
+
+  /* Hero card float */
+  @keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
+  .hero-card{animation:float 4s ease-in-out infinite}
+
+  /* CPAM step stamp */
+  @keyframes stamp{
+    0%{transform:scale(1.4) rotate(-8deg);opacity:0}
+    60%{transform:scale(.92) rotate(2deg);opacity:1}
+    100%{transform:scale(1) rotate(0);opacity:1}
+  }
+  .step.is-visible .step-num{animation:stamp .55s cubic-bezier(.22,.68,0,1.3) forwards}
+  .step:nth-child(1).is-visible .step-num{animation-delay:0ms}
+  .step:nth-child(2).is-visible .step-num{animation-delay:100ms}
+  .step:nth-child(3).is-visible .step-num{animation-delay:200ms}
+
+  /* CPAM background pulse */
+  @keyframes cpam-shift{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.7;transform:scale(1.08)}}
+  .cpam::before{animation:cpam-shift 10s ease-in-out infinite;transform-origin:center}
+
+  /* Form success pop */
+  @keyframes pop{0%{transform:scale(0);opacity:0}100%{transform:scale(1);opacity:1}}
+  .success-icon{animation:pop .5s cubic-bezier(.22,.68,0,1.4) forwards}
+}
+
+/* Nav sliding underline */
+.nav-links a{position:relative}
+.nav-links a::after{
+  content:'';position:absolute;bottom:-2px;left:0;
+  width:0;height:2px;border-radius:2px;
+  background:var(--bleu);transition:width .25s ease;
+}
+.nav-links a:hover::after{width:100%}
+
+/* Service card image zoom */
+.service-img{background-size:100%;transition:background-size .5s ease}
+.service-card:hover .service-img{background-size:108%}
+
+/* FAQ smooth accordion */
+details.faq-item > div{
+  display:grid;grid-template-rows:0fr;
+  transition:grid-template-rows .3s cubic-bezier(.22,.68,0,1.1);
+  overflow:hidden;padding:0 28px;
+}
+details.faq-item > div > *{overflow:hidden;min-height:0}
+details.faq-item[open] > div{grid-template-rows:1fr;padding-bottom:24px}
+
+/* Form success state */
+.form-success{
+  display:none;flex-direction:column;align-items:center;
+  justify-content:center;text-align:center;padding:48px 32px;min-height:380px;
+}
+.form-success.visible{display:flex}
+.form.submitted{display:none}
+.success-icon{
+  width:72px;height:72px;border-radius:50%;
+  background:linear-gradient(135deg,var(--vert),#0ea371);
+  display:grid;place-items:center;margin-bottom:24px;
+  box-shadow:0 12px 32px -8px rgba(16,185,129,.45);
+}
+.success-icon svg{width:36px;height:36px;color:#fff}
+.success-title{font-size:1.5rem;font-weight:800;color:var(--bleu-900);margin-bottom:12px}
+.success-msg{color:var(--ink-2);font-size:1rem;max-width:320px;line-height:1.7;margin-bottom:28px}
+.success-number{
+  display:inline-flex;align-items:center;gap:10px;
+  background:var(--vert-soft);color:var(--vert);
+  padding:12px 20px;border-radius:999px;
+  font-size:.95rem;font-weight:700;
 }
 </style>
 </head>
@@ -733,8 +825,8 @@ html,body{overflow-x:hidden}
 <!-- ================== TRUST BAR ================== -->
 <section class="trust" style="padding:0">
   <div class="container">
-    <div class="trust-grid">
-      <div class="trust-item">
+    <div class="trust-grid reveal-stagger">
+      <div class="trust-item reveal">
         <div class="trust-icon">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
         </div>
@@ -743,7 +835,7 @@ html,body{overflow-x:hidden}
           <span>Pro, médical ou loisirs</span>
         </div>
       </div>
-      <div class="trust-item">
+      <div class="trust-item reveal">
         <div class="trust-icon">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L4 6v6c0 5 3.5 9.3 8 10 4.5-.7 8-5 8-10V6l-8-4z"/></svg>
         </div>
@@ -752,7 +844,7 @@ html,body{overflow-x:hidden}
           <span>Agrément préfectoral en règle</span>
         </div>
       </div>
-      <div class="trust-item">
+      <div class="trust-item reveal">
         <div class="trust-icon">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="9" y1="21" x2="9" y2="9"/></svg>
         </div>
@@ -761,7 +853,7 @@ html,body{overflow-x:hidden}
           <span>Tarif préfectoral, devis longue distance</span>
         </div>
       </div>
-      <div class="trust-item">
+      <div class="trust-item reveal">
         <div class="trust-icon">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
         </div>
@@ -783,8 +875,8 @@ html,body{overflow-x:hidden}
       <p>Déplacement pro ou privé, transport médical conventionné, ou longue distance : le même niveau d'exigence à chaque trajet. Plusieurs véhicules, une seule équipe de confiance.</p>
     </div>
 
-    <div class="services-grid">
-      <article class="service-card">
+    <div class="services-grid reveal-stagger">
+      <article class="service-card reveal-scale">
         <div class="service-img" style="background-image:url('man-in-car.jpg')">
           <span class="service-tag">Lyon &amp; métropole</span>
         </div>
@@ -801,7 +893,7 @@ html,body{overflow-x:hidden}
         </div>
       </article>
 
-      <article class="service-card">
+      <article class="service-card reveal-scale">
         <div class="service-img" style="background-image:url('outdoors.jpg')">
           <span class="service-tag">France · Suisse · et au-delà</span>
         </div>
@@ -818,7 +910,7 @@ html,body{overflow-x:hidden}
         </div>
       </article>
 
-      <article class="service-card">
+      <article class="service-card reveal-scale">
         <div class="service-img" style="background-image:url('https://images.unsplash.com/photo-1631815589968-fdb09a223b1e?w=800&q=80')">
           <span class="service-tag">Conventionné CPAM</span>
         </div>
@@ -847,25 +939,25 @@ html,body{overflow-x:hidden}
       <p>Votre médecin vous a prescrit un transport médical ? Voici comment ça se passe, en 3 étapes simples.</p>
     </div>
 
-    <div class="steps">
-      <div class="step">
+    <div class="steps reveal-stagger">
+      <div class="step reveal">
         <div class="step-num">1</div>
         <h3>Votre prescription médicale</h3>
         <p>Votre médecin vous remet un bon de transport (prescription médicale obligatoire). Il précise le motif et le mode de transport autorisé : assis professionnalisé (TAP) ou VSL.</p>
       </div>
-      <div class="step">
+      <div class="step reveal">
         <div class="step-num">2</div>
         <h3>Réservez votre trajet</h3>
         <p>Appelez-nous au <a href="tel:+33699835389" style="color:#fff;text-decoration:underline">06 99 83 53 89</a> ou remplissez le formulaire. Indiquez la date, l'heure et l'établissement de destination.</p>
       </div>
-      <div class="step">
+      <div class="step reveal">
         <div class="step-num">3</div>
         <h3>Profitez du trajet, zéro stress</h3>
         <p>Nous venons vous chercher à domicile. Vous présentez votre prescription et votre carte Vitale. <strong style="color:#fff">Aucune avance de frais</strong> — nous facturons directement la CPAM et votre mutuelle.</p>
       </div>
     </div>
 
-    <div class="cpam-note">
+    <div class="cpam-note reveal">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
       <span><strong style="color:#fff">Bon à savoir :</strong> la prise en charge intégrale (tiers payant CPAM + mutuelle) s'applique notamment en cas d'ALD, maternité, hospitalisation, AT/MP. Le taux varie selon votre situation et votre complémentaire — nous vous aidons à vérifier votre éligibilité par téléphone.</span>
     </div>
@@ -876,8 +968,8 @@ html,body{overflow-x:hidden}
 <section class="zone" id="zone">
   <div class="container">
     <div class="zone-grid">
-      <div class="zone-img" role="img" aria-label="Vue panoramique de Lyon, France — Fourvière et Confluence"></div>
-      <div>
+      <div class="zone-img reveal-left" role="img" aria-label="Vue panoramique de Lyon, France — Fourvière et Confluence"></div>
+      <div class="reveal-right">
         <span class="eyebrow">Zone desservie</span>
         <h2>Lyon, la métropole &amp; au-delà</h2>
         <p>Nos taxis interviennent à Lyon intra-muros et dans toute la métropole. Pour les trajets longue distance, nous couvrons la région Auvergne-Rhône-Alpes et la France entière sur devis.</p>
@@ -909,8 +1001,8 @@ html,body{overflow-x:hidden}
       <h2>Des taxis, mais surtout une présence rassurante</h2>
     </div>
 
-    <div class="why-grid">
-      <div class="why-card">
+    <div class="why-grid reveal-stagger">
+      <div class="why-card reveal">
         <div class="why-icon">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
         </div>
@@ -918,7 +1010,7 @@ html,body{overflow-x:hidden}
         <p>Rendez-vous d'affaires, vol à prendre ou consultation médicale : nos chauffeurs vous amènent à l'heure, systématiquement.</p>
       </div>
 
-      <div class="why-card">
+      <div class="why-card reveal">
         <div class="why-icon">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
         </div>
@@ -926,7 +1018,7 @@ html,body{overflow-x:hidden}
         <p>Clients professionnels ou patients : chaque chauffeur respecte votre intimité, votre confort et votre silence quand vous le souhaitez.</p>
       </div>
 
-      <div class="why-card">
+      <div class="why-card reveal">
         <div class="why-icon">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
         </div>
@@ -934,7 +1026,7 @@ html,body{overflow-x:hidden}
         <p>Nous venons vous chercher et vous raccompagnons jusqu'à votre porte. Aide aux bagages incluse.</p>
       </div>
 
-      <div class="why-card">
+      <div class="why-card reveal">
         <div class="why-icon">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
         </div>
@@ -942,7 +1034,7 @@ html,body{overflow-x:hidden}
         <p>Licences taxi officielles, assurance professionnelle, véhicules contrôlés et maintenus impeccables.</p>
       </div>
 
-      <div class="why-card">
+      <div class="why-card reveal">
         <div class="why-icon">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="9" y1="21" x2="9" y2="9"/></svg>
         </div>
@@ -950,7 +1042,7 @@ html,body{overflow-x:hidden}
         <p>Tarification préfectorale affichée. Devis longue distance à l'avance. Aucune mauvaise surprise.</p>
       </div>
 
-      <div class="why-card">
+      <div class="why-card reveal">
         <div class="why-icon">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.8 19.8 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.8 12.8 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.8 12.8 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
         </div>
@@ -969,8 +1061,8 @@ html,body{overflow-x:hidden}
       <h2>Ils nous font confiance</h2>
     </div>
 
-    <div class="testi-grid">
-      <div class="testi-card">
+    <div class="testi-grid reveal-stagger">
+      <div class="testi-card reveal-scale">
         <div class="stars">★★★★★</div>
         <p>"J'ai pris ce taxi pour l'aéroport de Genève tôt le matin. Prix annoncé à l'avance, véhicule confortable, conducteur professionnel. Parfait pour un voyage d'affaires."</p>
         <div class="testi-meta">
@@ -982,7 +1074,7 @@ html,body{overflow-x:hidden}
         </div>
       </div>
 
-      <div class="testi-card">
+      <div class="testi-card reveal-scale">
         <div class="stars">★★★★★</div>
         <p>"Chauffeur d'une gentillesse remarquable. Je fais mes séances de dialyse trois fois par semaine et Sullivan est toujours ponctuel, patient, et très respectueux. Un vrai soutien."</p>
         <div class="testi-meta">
@@ -994,7 +1086,7 @@ html,body{overflow-x:hidden}
         </div>
       </div>
 
-      <div class="testi-card">
+      <div class="testi-card reveal-scale">
         <div class="stars">★★★★★</div>
         <p>"On fait appel à Gabriel régulièrement pour accueillir nos clients à Part-Dieu. Toujours à l'heure, présentation irréprochable, véhicule propre. Un partenaire fiable."</p>
         <div class="testi-meta">
@@ -1017,7 +1109,7 @@ html,body{overflow-x:hidden}
       <h2>Tout ce que vous devez savoir</h2>
     </div>
 
-    <div class="faq-list">
+    <div class="faq-list reveal">
       <details class="faq-item" open>
         <summary>Quels types de trajets effectuez-vous ?<span class="faq-icon"><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="7" y1="1" x2="7" y2="13"/><line x1="1" y1="7" x2="13" y2="7"/></svg></span></summary>
         <div>
@@ -1093,7 +1185,7 @@ html,body{overflow-x:hidden}
         Créer un compte sur https://formspree.io (ou alternative : Basin, Web3Forms, Formcarry)
         puis remplacer "YOUR_FORM_ID" par l'identifiant reçu.
       -->
-      <form class="form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+      <form class="form reveal-left" action="https://formspree.io/taxi.montdor@gmail.com" method="POST">
         <h3>Demande de réservation</h3>
         <p style="margin-bottom:24px;color:var(--ink-3);font-size:.92rem">Remplissez ce formulaire — nous vous rappelons dans les plus brefs délais.</p>
 
@@ -1153,7 +1245,20 @@ html,body{overflow-x:hidden}
         <small>En envoyant ce formulaire, vous acceptez d'être recontacté par Taxi Montdor. Vos données ne sont jamais partagées avec des tiers.</small>
       </form>
 
-      <div class="contact-info">
+      <!-- Form success state -->
+      <div class="form-success" id="form-success" aria-live="polite">
+        <div class="success-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+        </div>
+        <div class="success-title">Demande envoyée !</div>
+        <p class="success-msg">Merci pour votre message. Nous vous recontactons dans les plus brefs délais pour confirmer votre réservation.</p>
+        <div class="success-number">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.8 19.8 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.8 12.8 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.8 12.8 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          06 99 83 53 89
+        </div>
+      </div>
+
+      <div class="contact-info reveal-right">
         <a class="info-card info-phone" href="tel:+33699835389">
           <div class="info-icon">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.8 19.8 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.8 12.8 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.8 12.8 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
@@ -1325,6 +1430,73 @@ html,body{overflow-x:hidden}
 </script>
 
 <script>document.getElementById('year').textContent=new Date().getFullYear();</script>
+
+<!-- Scroll-reveal IntersectionObserver -->
+<script>
+(function(){
+  var mq=window.matchMedia('(prefers-reduced-motion: no-preference)');
+  if(!mq.matches)return;
+  var els=document.querySelectorAll('.reveal,.reveal-left,.reveal-right,.reveal-scale');
+  var obs=new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){
+        e.target.classList.add('is-visible');
+        obs.unobserve(e.target);
+      }
+    });
+  },{threshold:0.12,rootMargin:'0px 0px -48px 0px'});
+  els.forEach(function(el){
+    if(el.closest('.hero'))return;
+    obs.observe(el);
+  });
+})();
+</script>
+
+<!-- Form submit with success state -->
+<script>
+(function(){
+  var form=document.querySelector('form.form');
+  var success=document.getElementById('form-success');
+  if(!form||!success)return;
+  form.addEventListener('submit',function(e){
+    e.preventDefault();
+    var data=new FormData(form);
+    fetch(form.action,{method:'POST',body:data,headers:{'Accept':'application/json'}})
+      .then(function(r){
+        if(r.ok){
+          form.classList.add('submitted');
+          success.classList.add('visible');
+        }else{
+          form.querySelector('[type=submit]').textContent='Erreur — réessayer';
+        }
+      })
+      .catch(function(){
+        form.querySelector('[type=submit]').textContent='Erreur — réessayer';
+      });
+  });
+})();
+</script>
+
+<!-- Hero parallax (desktop only) -->
+<script>
+(function(){
+  var mq=window.matchMedia('(prefers-reduced-motion: no-preference)');
+  if(!mq.matches)return;
+  var img=document.querySelector('.hero-img');
+  if(!img)return;
+  var ticking=false;
+  window.addEventListener('scroll',function(){
+    if(ticking)return;
+    requestAnimationFrame(function(){
+      if(window.innerWidth>=900){
+        img.style.backgroundPositionY='calc(50% + '+(window.scrollY*0.18)+'px)';
+      }
+      ticking=false;
+    });
+    ticking=true;
+  },{passive:true});
+})();
+</script>
 
 <script>
 (function(){
